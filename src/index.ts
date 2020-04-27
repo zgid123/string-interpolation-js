@@ -5,7 +5,7 @@ interface IOptions {
 }
 
 const replaceKeyword = (source: string, keyword: string | number, value: any) => {
-  return source.replace(new RegExp(`:${keyword}`), value);
+  return source.replace(new RegExp(`:${keyword}`, 'g'), value);
 };
 
 const clearDirtyParam = (source: string) => {

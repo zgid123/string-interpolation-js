@@ -4,7 +4,6 @@ describe('interpole string with params is array', () => {
   const template = 'This function will :0 the string to become new :1 with :2 :3';
 
   test('without clear dirty param', () => {
-
     expect(
       interpole(template, ['interpole', 'string', 'params is array']),
     ).toEqual('This function will interpole the string to become new string with params is array :3');
@@ -21,7 +20,6 @@ describe('interpole string with params is object', () => {
   const template = 'This function will :method the string to become new :name with :text :any';
 
   test('without clear dirty param', () => {
-
     expect(
       interpole(template, {
         name: 'string',
@@ -41,5 +39,15 @@ describe('interpole string with params is object', () => {
         clearDirtyParam: true,
       }),
     ).toEqual('This function will interpole the string to become new string with params is array ');
+  });
+
+  test('keyword appears multiple times', () => {
+    expect(
+      interpole('The word :word appears multiple times. Here :word, and here :word.', {
+        word: 'text',
+      }, {
+        clearDirtyParam: true,
+      }),
+    ).toEqual('The word text appears multiple times. Here text, and here text.');
   });
 });
