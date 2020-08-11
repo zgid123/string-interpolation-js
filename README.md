@@ -70,3 +70,95 @@ console.log(
   }),
 ); // This function can format this template with  value
 ```
+
+If you have other pattern for your template, you can pass the pattern as regex or string
+
+```js
+import interpole from 'string-interpolation-js';
+
+const source = 'Hello {{ name }}';
+
+console.log(
+  interpole(
+    source,
+    { name: 'Alpha' },
+    {
+      // if true, there is no additional between specElement and pattern indicator
+      exactMatch: true,
+      // this is the specified element that is replaced with a key of data in the pattern
+      // in this example, the key 'name' is replaced for '_' in the pattern '{{ _ }}'
+      specElement: '_',
+      pattern: '{{ _ }}',
+    },
+  ),
+); // Hello Alpha
+
+console.log(
+  interpole(
+    source,
+    { name: 'Alpha' },
+    {
+      exactMatch: true,
+      specElement: '_',
+      pattern: '{{  _  }}',
+    },
+  ),
+); // Hello {{ name }}
+
+=============================================
+
+const source = 'Hello [[ name ]]';
+
+console.log(
+  interpole(
+    source,
+    { name: 'Alpha' },
+    {
+      exactMatch: true,
+      specElement: '_',
+      pattern: '[[ _ ]]',
+    },
+  ),
+); // Hello Alpha
+
+=============================================
+
+const source = 'Hello [[    name         ]]';
+
+console.log(
+  interpole(
+    source,
+    { name: 'Alpha' },
+    {
+      specElement: '_',
+      pattern: '[[ _ ]]',
+    },
+  ),
+); // Hello Alpha
+
+console.log(
+  interpole(
+    source,
+    { name: 'Alpha' },
+    {
+      exactMatch: true,
+      specElement: '_',
+      pattern: '[[ _ ]]',
+    },
+  ),
+); // Hello [[    name         ]]
+
+=============================================
+
+const source = 'Hello {{ name }}';
+
+console.log(
+  interpole(
+    source,
+    { name: 'Alpha' },
+    {
+      pattern: /{{ \w* }}/g,
+    },
+  ),
+); // Hello Alpha
+```

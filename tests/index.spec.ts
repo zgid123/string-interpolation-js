@@ -51,3 +51,89 @@ describe('interpole string with params is object', () => {
     ).toEqual('The word text appears multiple times. Here text, and here text.');
   });
 });
+
+describe('interpole string with custom pattern', () => {
+  const template = 'Hello {{ name }}, are you a {{ job }}?';
+  const template2 = 'Hello [[ name ]], are you a [[ job ]]?';
+  const template3 = 'Hello {{  name    }}, are you a {{     job   }}?';
+  const result = 'Hello Alpha, are you a developer?';
+
+  test('pattern is a string', () => {
+    expect(
+      interpole(template, {
+        name: 'Alpha',
+        job: 'developer',
+      }, {
+        exactMatch: true,
+        specElement: '_',
+        pattern: '{{ _ }}',
+      }),
+    ).toEqual(result);
+
+    expect(
+      interpole(template3, {
+        name: 'Alpha',
+        job: 'developer',
+      }, {
+        exactMatch: true,
+        specElement: '_',
+        pattern: '{{ _ }}',
+      }),
+    ).not.toEqual(result);
+
+    expect(
+      interpole(template3, {
+        name: 'Alpha',
+        job: 'developer',
+      }, {
+        exactMatch: true,
+        specElement: '###',
+        pattern: '{{ ### }}',
+      }),
+    ).not.toEqual(result);
+
+    expect(
+      interpole(template2, {
+        name: 'Alpha',
+        job: 'developer',
+      }, {
+        exactMatch: true,
+        specElement: '_',
+        pattern: '[[ _ ]]',
+      }),
+    ).toEqual(result);
+  });
+
+  test('pattern is a regex pattern', () => {
+    expect(
+      interpole(template, {
+        name: 'Alpha',
+        job: 'developer',
+      }, {
+        pattern: /{{ \w* }}/,
+      }),
+    ).toEqual(result);
+  });
+
+  test('pattern is a string and exactMatch is false', () => {
+    expect(
+      interpole(template, {
+        name: 'Alpha',
+        job: 'developer',
+      }, {
+        specElement: '_',
+        pattern: '{{ _ }}',
+      }),
+    ).toEqual(result);
+
+    expect(
+      interpole(template3, {
+        name: 'Alpha',
+        job: 'developer',
+      }, {
+        specElement: '_',
+        pattern: '{{ _ }}',
+      }),
+    ).toEqual(result);
+  });
+});
