@@ -1,6 +1,6 @@
 {
   "name": "string-interpolation-js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple module to format string from template",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -22,26 +22,15 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/jest": "^25.1.4",
-    "@typescript-eslint/eslint-plugin": "^2.25.0",
-    "@typescript-eslint/parser": "^2.25.0",
-    "eslint": "^6.8.0",
+    "@types/jest": "^27.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "eslint": "^8.2.0",
     "eslint-config-typescript": "^3.0.0",
-    "husky": "^4.2.3",
-    "jest": "^25.1.0",
-    "lint-staged": "^10.0.9",
-    "ts-jest": "^25.2.1",
-    "typescript": "^3.8.3"
-  },
-  "lint-staged": {
-    "*.ts": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "husky": "^7.0.4",
+    "jest": "^27.3.1",
+    "lint-staged": "^12.0.3",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.5.2"
   }
 }

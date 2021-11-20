@@ -137,3 +137,41 @@ describe('interpole string with custom pattern', () => {
     ).toEqual(result);
   });
 });
+
+describe('interpole string with nested object params', () => {
+  const template = 'Hello {{ user.name }}, are you a {{ user.job.name }}?';
+  const result = 'Hello Alpha, are you a developer?';
+
+  test('pattern is a string', () => {
+    expect(
+      interpole(template, {
+        user: {
+          name: 'Alpha',
+          job: {
+            name: 'developer',
+          },
+        },
+      }, {
+        exactMatch: true,
+        specElement: '_',
+        pattern: '{{ _ }}',
+      }),
+    ).toEqual(result);
+  });
+
+  test('pattern is a string and exactMatch is false', () => {
+    expect(
+      interpole(template, {
+        user: {
+          name: 'Alpha',
+          job: {
+            name: 'developer',
+          },
+        },
+      }, {
+        specElement: '_',
+        pattern: '{{ _ }}',
+      }),
+    ).toEqual(result);
+  });
+});

@@ -162,3 +162,30 @@ console.log(
   ),
 ); // Hello Alpha
 ```
+
+You can pass object value to interpole the string
+
+```js
+import interpole from 'string-interpolation-js';
+
+const source = 'Hello {{ user.name }}';
+
+console.log(
+  interpole(
+    source,
+    {
+      user: {
+        name: 'Alpha',
+      },
+    },
+    {
+      // if true, there is no additional between specElement and pattern indicator
+      exactMatch: true,
+      // this is the specified element that is replaced with a key of data in the pattern
+      // in this example, the key 'name' is replaced for '_' in the pattern '{{ _ }}'
+      specElement: '_',
+      pattern: '{{ _ }}',
+    },
+  ),
+); // Hello Alpha
+```

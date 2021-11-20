@@ -15,7 +15,8 @@
     "strictFunctionTypes": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "strictPropertyInitialization": true
+    "strictPropertyInitialization": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "src/**/*"

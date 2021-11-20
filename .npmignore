@@ -5,3 +5,5 @@ jestconfig.json
 tsconfig.json
 tsconfig.spec.json
 yarn.lock
+.husky
+.lintstagedrc
