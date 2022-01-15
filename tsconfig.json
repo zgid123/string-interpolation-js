@@ -8,6 +8,7 @@
     "baseUrl": "./src",
     "declaration": true,
     "module": "commonjs",
+    "importHelpers": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",

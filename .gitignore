@@ -17,4 +17,3 @@ yarn-error.log*
 
 *.js.map
 lib
-.vscode

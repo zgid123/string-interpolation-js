@@ -11,10 +11,26 @@ import type {
   IOptionsWithRegExpPatternProps,
 } from './interface';
 
-function interpole(source: string, params: TParams, options?: IOptionsWithPatternProps): string;
-function interpole(source: string, params: TParams, options?: IOptionsWithRegExpPatternProps): string;
-function interpole(source: string, params: TParams, options?: IOptionsBaseProps): string;
-function interpole(source: string, params: TParams, options: TOptions = { clearDirtyParam: false }): string {
+function interpole(
+  source: string,
+  params: TParams,
+  options?: IOptionsWithPatternProps,
+): string;
+function interpole(
+  source: string,
+  params: TParams,
+  options?: IOptionsWithRegExpPatternProps,
+): string;
+function interpole(
+  source: string,
+  params: TParams,
+  options?: IOptionsBaseProps,
+): string;
+function interpole(
+  source: string,
+  params: TParams,
+  options: TOptions = { clearDirtyParam: false },
+): string {
   if (typeof source !== 'string') {
     return source;
   }

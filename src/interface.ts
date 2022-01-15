@@ -1,5 +1,7 @@
 export type TData = string | number | boolean | undefined | null;
-export type TParams = { [key: string]: TData | Record<string, TData | TParams> } | TData[];
+export type TParams =
+  | { [key: string]: TData | Record<string, TData | TParams> }
+  | TData[];
 
 export interface IOptionsBaseProps {
   clearDirtyParam?: boolean;
@@ -21,6 +23,9 @@ export interface IOptionsWithRegExpPatternProps extends IOptionsBaseProps {
   pattern: RegExp;
 }
 
-export type TOptions = Omit<Partial<IOptionsWithPatternProps & IOptionsWithRegExpPatternProps>, 'pattern'> & {
+export type TOptions = Omit<
+  Partial<IOptionsWithPatternProps & IOptionsWithRegExpPatternProps>,
+  'pattern'
+> & {
   pattern?: string | RegExp;
 };

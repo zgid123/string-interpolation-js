@@ -2,7 +2,7 @@ import { escapeRegExp } from './escapeRegExp';
 import type { TData, TOptions, TParams } from '../interface';
 
 function isObject(obj: unknown): obj is Record<string, TParams | TData> {
-  return typeof obj === 'object' && !!obj
+  return typeof obj === 'object' && !!obj;
 }
 
 function replaceKeyword(
@@ -25,34 +25,55 @@ function replaceKeyword(
     keyword = ` *${keyword} *`;
   }
 
-  const replacementPattern = escapeRegExp(pattern).replace(specElement, keyword.toString());
+  const replacementPattern = escapeRegExp(pattern).replace(
+    specElement,
+    keyword.toString(),
+  );
 
   return source.replace(new RegExp(replacementPattern, 'g'), value);
-};
+}
 
-export function replaceKeywordForArrayParams(source: string, params: TData[], options: TOptions): string {
+export function replaceKeywordForArrayParams(
+  source: string,
+  params: TData[],
+  options: TOptions,
+): string {
   for (const i in params) {
     source = replaceKeyword(source, i, params[i], options);
   }
 
   return source;
-};
+}
 
-function replaceKeywordForNestedObjectParams(source: string, key: string, params: Record<string, TParams | TData>, options: TOptions): string {
+function replaceKeywordForNestedObjectParams(
+  source: string,
+  key: string,
+  params: Record<string, TParams | TData>,
+  options: TOptions,
+): string {
   Object.entries(params).forEach(([objectKey, objectValue]) => {
     const replaceKey = `${key}.${objectKey}`;
 
     if (isObject(objectValue)) {
-      source = replaceKeywordForNestedObjectParams(source, replaceKey, objectValue, options);
+      source = replaceKeywordForNestedObjectParams(
+        source,
+        replaceKey,
+        objectValue,
+        options,
+      );
     } else {
       source = replaceKeyword(source, replaceKey, objectValue, options);
     }
   });
 
   return source;
-};
+}
 
-export function replaceKeywordForObjectParams(source: string, params: TParams, options: TOptions): string {
+export function replaceKeywordForObjectParams(
+  source: string,
+  params: TParams,
+  options: TOptions,
+): string {
   Object.entries(params).forEach(([key, value]) => {
     if (isObject(value)) {
       source = replaceKeywordForNestedObjectParams(source, key, value, options);
@@ -62,4 +83,4 @@ export function replaceKeywordForObjectParams(source: string, params: TParams, o
   });
 
   return source;
-};
+}
