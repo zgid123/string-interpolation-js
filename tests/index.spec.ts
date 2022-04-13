@@ -233,3 +233,30 @@ describe('interpole string with nested object params', () => {
     ).toEqual(result);
   });
 });
+
+describe('interpole string with template literals', () => {
+  const template = 'Hello {{ user.name }}, are you a ${{ user.job.name }}?';
+  const result = 'Hello Alpha, are you a {{ user.job.name }}?';
+
+  test('keep template pattern', () => {
+    expect(
+      interpole(
+        template,
+        {
+          user: {
+            name: 'Alpha',
+            job: {
+              name: 'developer',
+            },
+          },
+        },
+        {
+          exactMatch: true,
+          specElement: '_',
+          pattern: '{{ _ }}',
+          templateLiterals: '$',
+        },
+      ),
+    ).toEqual(result);
+  });
+});

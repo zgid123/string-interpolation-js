@@ -17,6 +17,9 @@ export interface IOptionsWithPatternProps extends IOptionsBaseProps {
   // only this example is true {{ name }}
   // if false, those two examples above are true
   exactMatch?: boolean;
+  // will exclude if matches
+  // <templateLiterals><pattern>
+  templateLiterals?: string;
 }
 
 export interface IOptionsWithRegExpPatternProps extends IOptionsBaseProps {

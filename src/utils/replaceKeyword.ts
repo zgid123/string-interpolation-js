@@ -11,7 +11,7 @@ function replaceKeyword(
   value: any,
   options: Omit<TOptions, 'clearDirtyParam'> = {},
 ): string {
-  const { pattern, specElement, exactMatch } = options;
+  const { pattern, specElement, exactMatch, templateLiterals } = options;
 
   if (pattern instanceof RegExp) {
     return source.replace(pattern, value);
@@ -25,12 +25,25 @@ function replaceKeyword(
     keyword = ` *${keyword} *`;
   }
 
-  const replacementPattern = escapeRegExp(pattern).replace(
+  // TODO: change to pattern (?<!<templateLitterals>)<pattern> when all browsers support negative lookbehind
+  const escapePattern = escapeRegExp(pattern).replace(
     specElement,
     keyword.toString(),
   );
+  const replacementPattern = `(\\S|)${escapePattern}`;
+  const escapeRegExpPatternWithBegin = new RegExp(`^${escapePattern}$`);
 
-  return source.replace(new RegExp(replacementPattern, 'g'), value);
+  return source.replace(new RegExp(replacementPattern, 'g'), (replacement) => {
+    if (escapeRegExpPatternWithBegin.test(replacement)) {
+      return value;
+    }
+
+    if (replacement[0] === templateLiterals) {
+      return replacement.slice(1);
+    }
+
+    return `${replacement[0]}${value}`;
+  });
 }
 
 export function replaceKeywordForArrayParams(

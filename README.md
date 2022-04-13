@@ -63,11 +63,15 @@ console.log(interpole(source, ['format'], { clearDirtyParam: true })); // This f
 const source = 'This function can :method this template with :type value';
 
 console.log(
-  interpole(source, {
-    method: 'format',
-  }, {
-    clearDirtyParam: true,
-  }),
+  interpole(
+    source,
+    {
+      method: 'format',
+    },
+    {
+      clearDirtyParam: true,
+    },
+  ),
 ); // This function can format this template with  value
 ```
 
@@ -188,4 +192,31 @@ console.log(
     },
   ),
 ); // Hello Alpha
+```
+
+# Changelogs
+
+- 1.0.4: support template literals, it will exclude the pattern if has template literals as prefix
+
+```ts
+import interpole from 'string-interpolation-js';
+
+const source = 'Hello {{ user.name }} ${{ user.name }}';
+
+console.log(
+  interpole(
+    source,
+    {
+      user: {
+        name: 'Alpha',
+      },
+    },
+    {
+      exactMatch: true,
+      specElement: '_',
+      pattern: '{{ _ }}',
+      templateLiterals: '$',
+    },
+  ),
+); // Hello Alpha {{ user.name }}
 ```
