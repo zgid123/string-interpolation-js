@@ -1,30 +1,20 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "allowJs": true,
-    "outDir": "./lib",
-    "sourceMap": false,
-    "target": "es2017",
     "baseUrl": "./src",
     "declaration": true,
-    "module": "commonjs",
-    "importHelpers": true,
-    "strictNullChecks": true,
-    "resolveJsonModule": true,
-    "moduleResolution": "node",
-    "strictBindCallApply": true,
-    "strictFunctionTypes": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "strictPropertyInitialization": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "./lib",
+    "resolveJsonModule": true,
+    "sourceMap": false,
+    "strict": true,
+    "target": "esnext"
   },
   "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "lib",
-    "node_modules",
-    "**/*.spec.ts"
+    "./src"
   ]
 }
