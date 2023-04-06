@@ -1,10 +1,12 @@
+import { describe, it, expect } from 'vitest';
+
 import interpole from '../src';
 
 describe('interpole string with params is array', () => {
   const template =
     'This function will :0 the string to become new :1 with :2 :3';
 
-  test('without clear dirty param', () => {
+  it('without clear dirty param', () => {
     expect(
       interpole(template, ['interpole', 'string', 'params is array']),
     ).toEqual(
@@ -12,7 +14,7 @@ describe('interpole string with params is array', () => {
     );
   });
 
-  test('with clear dirty param', () => {
+  it('with clear dirty param', () => {
     expect(
       interpole(template, ['interpole', 'string', 'params is array'], {
         clearDirtyParam: true,
@@ -27,7 +29,7 @@ describe('interpole string with params is object', () => {
   const template =
     'This function will :method the string to become new :name with :text :any';
 
-  test('without clear dirty param', () => {
+  it('without clear dirty param', () => {
     expect(
       interpole(template, {
         name: 'string',
@@ -39,7 +41,7 @@ describe('interpole string with params is object', () => {
     );
   });
 
-  test('with clear dirty param', () => {
+  it('with clear dirty param', () => {
     expect(
       interpole(
         template,
@@ -57,7 +59,7 @@ describe('interpole string with params is object', () => {
     );
   });
 
-  test('keyword appears multiple times', () => {
+  it('keyword appears multiple times', () => {
     expect(
       interpole(
         'The word :word appears multiple times. Here :word, and here :word.',
@@ -80,7 +82,7 @@ describe('interpole string with custom pattern', () => {
   const template3 = 'Hello {{  name    }}, are you a {{     job   }}?';
   const result = 'Hello Alpha, are you a developer?';
 
-  test('pattern is a string', () => {
+  it('pattern is a string', () => {
     expect(
       interpole(
         template,
@@ -142,7 +144,7 @@ describe('interpole string with custom pattern', () => {
     ).toEqual(result);
   });
 
-  test('pattern is a regex pattern', () => {
+  it('pattern is a regex pattern', () => {
     expect(
       interpole(
         template,
@@ -157,7 +159,7 @@ describe('interpole string with custom pattern', () => {
     ).toEqual(result);
   });
 
-  test('pattern is a string and exactMatch is false', () => {
+  it('pattern is a string and exactMatch is false', () => {
     expect(
       interpole(
         template,
@@ -192,7 +194,7 @@ describe('interpole string with nested object params', () => {
   const template = 'Hello {{ user.name }}, are you a {{ user.job.name }}?';
   const result = 'Hello Alpha, are you a developer?';
 
-  test('pattern is a string', () => {
+  it('pattern is a string', () => {
     expect(
       interpole(
         template,
@@ -213,7 +215,7 @@ describe('interpole string with nested object params', () => {
     ).toEqual(result);
   });
 
-  test('pattern is a string and exactMatch is false', () => {
+  it('pattern is a string and exactMatch is false', () => {
     expect(
       interpole(
         template,
@@ -238,7 +240,7 @@ describe('interpole string with template literals', () => {
   const template = 'Hello {{ user.name }}, are you a ${{ user.job.name }}?';
   const result = 'Hello Alpha, are you a {{ user.job.name }}?';
 
-  test('keep template pattern', () => {
+  it('keep template pattern', () => {
     expect(
       interpole(
         template,

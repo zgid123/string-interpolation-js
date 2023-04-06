@@ -1,9 +1,11 @@
+import { describe, it, expect } from 'vitest';
+
 import { replaceKeywordForObjectParams } from '../../src/utils';
 
 describe('replace keyword for object params', () => {
   const template = 'Hello :name {{ name }} ${{ name }}';
 
-  test('replace param with : as prefix', () => {
+  it('replace param with : as prefix', () => {
     expect(
       replaceKeywordForObjectParams(
         template,
@@ -15,7 +17,7 @@ describe('replace keyword for object params', () => {
     ).toEqual('Hello test {{ name }} ${{ name }}');
   });
 
-  test('replace param with pattern', () => {
+  it('replace param with pattern', () => {
     expect(
       replaceKeywordForObjectParams(
         template,
@@ -30,7 +32,7 @@ describe('replace keyword for object params', () => {
     ).toEqual('Hello :name test $test');
   });
 
-  test('replace param with pattern and exclude pattern has template litterals as prefix', () => {
+  it('replace param with pattern and exclude pattern has template litterals as prefix', () => {
     expect(
       replaceKeywordForObjectParams(
         template,
