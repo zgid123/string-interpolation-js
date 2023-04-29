@@ -1,7 +1,6 @@
 export type TData = string | number | boolean | undefined | null;
-export type TParams =
-  | { [key: string]: TData | Record<string, TData | TParams> }
-  | TData[];
+
+export type TParams = Record<string, any> | TData[];
 
 export interface IOptionsBaseProps {
   clearDirtyParam?: boolean;

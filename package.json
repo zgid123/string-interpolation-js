@@ -1,6 +1,6 @@
 {
   "name": "string-interpolation-js",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Simple module to format string from template",
   "main": "./lib/index.cjs",
   "module": "./lib/index.mjs",
@@ -28,26 +28,27 @@
   "author": "Alpha",
   "repository": {
     "type": "git",
-    "url": "git@github.com:zgid123/string-interpolation-js.git"
+    "url": "git+https://github.com/zgid123/string-interpolation-js.git"
   },
   "license": "MIT",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-commonjs": "^24.1.0",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@rollup/plugin-typescript": "^11.1.0",
-    "@typescript-eslint/eslint-plugin": "^5.57.1",
-    "@typescript-eslint/parser": "^5.57.1",
-    "eslint": "^8.37.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "eslint": "^8.39.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-typescript": "^3.0.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.0",
-    "prettier": "^2.8.7",
-    "rollup": "^3.20.2",
-    "typescript": "^5.0.3",
-    "vitest": "^0.29.8"
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "rollup": "^3.21.1",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.3",
+    "vitest": "^0.30.1"
   },
   "dependencies": {
     "tslib": "^2.5.0"

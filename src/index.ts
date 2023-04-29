@@ -11,24 +11,24 @@ import type {
   IOptionsWithRegExpPatternProps,
 } from './interface';
 
-function interpole(
+function interpole<T extends TParams = TParams>(
   source: string,
-  params: TParams,
+  params: T,
   options?: IOptionsWithPatternProps,
 ): string;
-function interpole(
+function interpole<T extends TParams = TParams>(
   source: string,
-  params: TParams,
+  params: T,
   options?: IOptionsWithRegExpPatternProps,
 ): string;
-function interpole(
+function interpole<T extends TParams = TParams>(
   source: string,
-  params: TParams,
+  params: T,
   options?: IOptionsBaseProps,
 ): string;
-function interpole(
+function interpole<T extends TParams = TParams>(
   source: string,
-  params: TParams,
+  params: T,
   options: TOptions = { clearDirtyParam: false },
 ): string {
   if (typeof source !== 'string') {

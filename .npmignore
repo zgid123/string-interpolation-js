@@ -4,6 +4,10 @@ tests
 jestconfig.json
 tsconfig.json
 tsconfig.spec.json
-yarn.lock
 .husky
 .lintstagedrc
+.vscode
+.prettierrc
+rollup.config.ts
+vitest.config.ts
+pnpm-lock.yaml
