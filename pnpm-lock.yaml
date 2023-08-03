@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   tslib:
     specifier: ^2.5.0
@@ -53,7 +57,7 @@ devDependencies:
     version: 5.0.4
   vite:
     specifier: ^4.3.3
-    version: 4.3.3(@types/node@18.16.0)
+    version: 4.3.9(@types/node@18.16.0)
   vitest:
     specifier: ^0.30.1
     version: 0.30.1
@@ -2103,7 +2107,7 @@ packages:
       mlly: 1.2.0
       pathe: 1.1.0
       picocolors: 1.0.0
-      vite: 4.3.3(@types/node@18.16.0)
+      vite: 4.3.9(@types/node@18.16.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -2114,8 +2118,8 @@ packages:
       - terser
     dev: true
 
-  /vite@4.3.3(@types/node@18.16.0):
-    resolution: {integrity: sha512-MwFlLBO4udZXd+VBcezo3u8mC77YQk+ik+fbc0GZWGgzfbPP+8Kf0fldhARqvSYmtIWoAJ5BXPClUbMTlqFxrA==}
+  /vite@4.3.9(@types/node@18.16.0):
+    resolution: {integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -2201,7 +2205,7 @@ packages:
       strip-literal: 1.0.1
       tinybench: 2.4.0
       tinypool: 0.4.0
-      vite: 4.3.3(@types/node@18.16.0)
+      vite: 4.3.9(@types/node@18.16.0)
       vite-node: 0.30.1(@types/node@18.16.0)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
