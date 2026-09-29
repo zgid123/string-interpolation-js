@@ -1,5 +1,5 @@
-import { escapeRegExp } from './escapeRegExp';
 import type { TData, TOptions, TParams } from '../interface';
+import { escapeRegExp } from './escapeRegExp';
 
 function isObject(obj: unknown): obj is Record<string, TParams | TData> {
   return typeof obj === 'object' && !!obj;
@@ -8,6 +8,7 @@ function isObject(obj: unknown): obj is Record<string, TParams | TData> {
 function replaceKeyword(
   source: string,
   keyword: string | number,
+  // biome-ignore lint/suspicious/noExplicitAny: ignore
   value: any,
   options: Omit<TOptions, 'clearDirtyParam'> = {},
 ): string {

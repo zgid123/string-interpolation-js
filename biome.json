@@ -1,0 +1,11 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.14/schema.json",
+  "extends": ["@alphacifer/biome/config"],
+  "linter": {
+    "rules": {
+      "suspicious": {
+        "noTemplateCurlyInString": "off"
+      }
+    }
+  }
+}

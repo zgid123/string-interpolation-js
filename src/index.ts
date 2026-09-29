@@ -1,15 +1,15 @@
+import type {
+  IOptionsBaseProps,
+  IOptionsWithPatternProps,
+  IOptionsWithRegExpPatternProps,
+  TOptions,
+  TParams,
+} from './interface';
 import {
   clearDirtyParam,
   replaceKeywordForArrayParams,
   replaceKeywordForObjectParams,
 } from './utils';
-import type {
-  TParams,
-  TOptions,
-  IOptionsBaseProps,
-  IOptionsWithPatternProps,
-  IOptionsWithRegExpPatternProps,
-} from './interface';
 
 function interpole<T extends TParams = TParams>(
   source: string,

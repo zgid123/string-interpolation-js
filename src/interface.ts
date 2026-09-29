@@ -1,5 +1,6 @@
 export type TData = string | number | boolean | undefined | null;
 
+// biome-ignore lint/suspicious/noExplicitAny: ignore
 export type TParams = Record<string, any> | TData[];
 
 export interface IOptionsBaseProps {

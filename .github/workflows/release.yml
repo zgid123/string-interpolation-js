@@ -1,0 +1,39 @@
+name: Release package
+
+on:
+  push:
+    paths:
+      - '.changeset/*.md'
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    name: Release Changes
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Prepare Node.JS and pnpm
+        uses: ./.github/actions/prepare-nodejs-pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Disable GPG
+        run: git config --global commit.gpgsign false
+
+      - name: Create Release PR or Publish
+        uses: changesets/action@v2
+        with:
+          publish-script: pnpm release
+          create-github-releases: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}

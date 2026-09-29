@@ -1,6 +1,4 @@
-import { describe, it, expect } from 'vitest';
-
-import { clearDirtyParam } from '../../src/utils';
+import { clearDirtyParam } from '../../utils';
 
 describe('clear dirty param for string', () => {
   const template = 'This function will clear dirty :3 param for string';

@@ -1,6 +1,4 @@
-import { describe, it, expect } from 'vitest';
-
-import { escapeRegExp } from '../../src/utils';
+import { escapeRegExp } from '../../utils';
 
 describe('escape reg exp for string', () => {
   const template = '[[ _ ]]';

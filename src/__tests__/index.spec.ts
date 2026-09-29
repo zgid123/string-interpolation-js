@@ -1,6 +1,4 @@
-import { describe, it, expect } from 'vitest';
-
-import interpole from '../src';
+import interpole from '..';
 
 describe('interpole string with params is array', () => {
   const template =

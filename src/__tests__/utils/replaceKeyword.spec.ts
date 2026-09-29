@@ -1,6 +1,4 @@
-import { describe, it, expect } from 'vitest';
-
-import { replaceKeywordForObjectParams } from '../../src/utils';
+import { replaceKeywordForObjectParams } from '../../utils';
 
 describe('replace keyword for object params', () => {
   const template = 'Hello :name {{ name }} ${{ name }}';

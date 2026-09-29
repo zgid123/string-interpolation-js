@@ -1,4 +1,4 @@
-import interpole from '../src/index';
+import interpole from '..';
 
 interface IUserProps {
   email: string;
